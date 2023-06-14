@@ -19,7 +19,10 @@ class DiceGame {
         die3.roll()
         println("After rolling, Current Side Up: ${die3.sideUp}")
 
-        
+         // Choose one Die object and set it to show its highest value
+         val die4 = Die()
+         die4.setSideUp(die4.getNumSides().value)
+         println("Die 4 - Color: ${die4.getColor()}, Sides: ${die4.getNumSides()}, Current Side Up: ${die4.sideUp}")
 }
 
 fun main() {
