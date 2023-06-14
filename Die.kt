@@ -22,7 +22,29 @@ class Die {
         this.sides = sides
         roll()
     }
+    fun getType(): String { // Accessor for the type property
+        return type
+    }
 
+    fun setType(type: String) { // Mutator for the type property
+        this.type = type
+    }
+
+    fun getSides(): Int { // Accessor for the sides property
+        return sides
+    }
+
+    fun setSides(sides: Int) { // Mutator for the sides property
+        this.sides = sides
+    }
+
+    fun getCurrentSideUp(): Int { // Accessor for the currentSideUp property
+        return currentSideUp
+    }
+
+    fun roll() { // Method to generate a random value for the current side up
+        currentSideUp = Random.nextInt(1, sides + 1)
+    }
 
     }
 
