@@ -1,51 +1,56 @@
+package game
+
 import kotlin.random.Random
 
-class Die {
-    private var type: String // Property to store the type of the die
-    private var sides: Int // Property to store the number of sides of the die
-    private var currentSideUp: Int // Property to store the current side facing up
+// Define an enumeration for colors of the die
+enum class Color {
+    RED,
+    WHITE,
+    ORANGE,
+    BLACK
+}
 
-    constructor() { // 0 argument constructor
-        type = "d6" // Default type
-        sides = 6 // Default number of sides
-        roll() // Generate random side up
+// Define an enumeration for the number of sides of the die
+enum class Sides(val value: Int) {
+    THREE(3),
+    FOUR(4),
+    SIX(6),
+    TWENTY(20),
+}
+
+// Define the Die class
+class Die(private val color: Color, private val numSides: Sides) {
+    var sideUp: Int = 1 // Property to store the current side facing up, initialized to 1
+        private set // Private setter to ensure sideUp can only be modified internally
+
+    // Initialization block that runs when a Die object is created
+    init {
+        roll() // Call the roll method to set the initial side up
     }
 
-    constructor(sides: Int) { // 1 argument constructor
-        type = "d$sides" // Type based on the number of sides
-        this.sides = sides
-        roll()
+    // Secondary constructor that takes only the number of sides and uses default color
+    constructor(numSides: Sides) : this(Color.WHITE, numSides)
+
+    // Secondary constructor that takes no arguments and uses default color and number of sides
+    constructor() : this(Color.RED, Sides.SIX)
+
+    // Method to simulate rolling the die and generate a random side up
+    fun roll() {
+        sideUp = Random.nextInt(1, numSides.value + 1)
     }
 
-    constructor(sides: Int, type: String) { // 2 argument constructor
-        this.type = type // Custom type
-        this.sides = sides
-        roll()
+    //Method to get the color of the die
+    fun getColor(): Color {
+        return color
     }
-    fun getType(): String { // Accessor for the type property
-        return type
+    //Method to get the number os sides of the die
+    fun getNumSides(): Sides {
+        return numSides
     }
-
-    fun setType(type: String) { // Mutator for the type property
-        this.type = type
+    //Method to set the sideUp value of the die
+    fun setSideUp(value: Int) {
+        sideUp = value
     }
-
-    fun getSides(): Int { // Accessor for the sides property
-        return sides
-    }
-
-    fun setSides(sides: Int) { // Mutator for the sides property
-        this.sides = sides
-    }
-
-    fun getCurrentSideUp(): Int { // Accessor for the currentSideUp property
-        return currentSideUp
-    }
-
-    fun roll() { // Method to generate a random value for the current side up
-        currentSideUp = Random.nextInt(1, sides + 1)
-    }
-
-    }
-
+   
+}
 
