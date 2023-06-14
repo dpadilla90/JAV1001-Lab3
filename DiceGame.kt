@@ -1,34 +1,28 @@
+package game
+
+class DiceGame {
+    fun run() {
+        val die1 = Die() // Create a die using the default constructor
+        val die2 = Die(Sides.FOUR) // Create a die with specified number of sides
+        val die3 = Die(Color.ORANGE, Sides.TWENTY) // Create a die with specified color and number of sides
+
+        // Display die information before and after rolling
+        println("Die 1 - Color: ${die1.getColor()}, Sides: ${die1.getNumSides()}, Current Side Up: ${die1.sideUp}")
+        die1.roll()
+        println("After rolling, Current Side Up: ${die1.sideUp}")
+
+        println("Die 2 - Color: ${die2.getColor()}, Sides: ${die2.getNumSides()}, Current Side Up: ${die2.sideUp}")
+        die2.roll()
+        println("After rolling, Current Side Up: ${die2.sideUp}")
+
+        println("Die 3 - Color: ${die3.getColor()}, Sides: ${die3.getNumSides()}, Current Side Up: ${die3.sideUp}")
+        die3.roll()
+        println("After rolling, Current Side Up: ${die3.sideUp}")
+
+        
+}
 
 fun main() {
     val game = DiceGame()
-    game.run()
-}
-class DiceGame {
-    fun run () {
-        val die1 = Die() // Create a die using the 0 argument constructor
-        println("Die 1 - Type: ${die1.getType()}, Sides: ${die1.getSides()}, Current Side Up: ${die1.getCurrentSideUp()}")
-        die1.roll()
-        println("After rolling, Current Side Up: ${die1.getCurrentSideUp()}")
-
-        // Create a die with 12 sides (1 argunment constructor)
-        val die2 = Die(12)
-        println("Die 2 - Type: ${die2.getType()}, Sides: ${die2.getSides()}, Current Side Up: ${die2.getCurrentSideUp()}")
-        die2.roll()
-        println("After rolling, Current Side Up: ${die2.getCurrentSideUp()}")
-
-        // Create a die with 8 sides and a custom type (2 argument constructor)
-        val die3 = Die(8, "d8")
-        println("Die 3 - Type: ${die3.getType()}, Sides: ${die3.getSides()}, Current Side Up: ${die3.getCurrentSideUp()}")
-        die3.roll()
-        println("After rolling, Current Side Up: ${die3.getCurrentSideUp()}")
-
-        // Create a die with default settings, then modify its sides and type
-        val die4 = Die()
-        die4.setSides(20)
-        die4.setType("d20")
-        println("Die 4 - Type: ${die4.getType()}, Sides: ${die4.getSides()}, Current Side Up: ${die4.getCurrentSideUp()}")
-        die4.roll()
-        println("After rolling, Current Side Up: ${die4.getCurrentSideUp()}")
-    }
-
+    game.run() // Run the dice game
 }
